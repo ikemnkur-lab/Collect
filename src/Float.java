@@ -1,9 +1,9 @@
 
-public class Cube {
+public class Float {
 
-	private double vol, sArea, outDensity, inDensity ;
+	private double vol, sArea, outDensity, inDensity, loadMass;
 	
-	public Cube (double volume, double surfaceArea, double outerDensity, double innerDensity) {
+	public Float (double volume, double surfaceArea, double outerDensity, double innerDensity) {
 		vol = volume;
 		sArea = surfaceArea;
 		outDensity = outerDensity;
@@ -27,8 +27,13 @@ public class Cube {
 		inDensity = outerDensity;
 	}
 	
-	public boolean canFloat() {
-		return vol*inDensity > sArea*outDensity;
+	public String canFloat(double load) {
+		loadMass = load;
+		String text = "can not float a load of" + loadMass;
+		if(vol*(1-inDensity) + sArea*outDensity + load < 0)
+			text = "can float a load of" + load;
+			
+		return text;
 	}
 	
 }
